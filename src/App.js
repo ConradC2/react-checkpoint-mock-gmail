@@ -50,32 +50,32 @@ class App extends React.Component {
   }
 
   async getEmails() {
-    const response = await fetch(Email)
-    const json = await response.json()
+    const response = await fetch(Email);
+    const json = await response.json();
     //console.log(response.json);
     
-    this.setState({allEmails: json})
-    this.setState({fullEmailList: json})
+    this.setState({ allEmails: json });
+    this.setState({ fullEmailList: json });
   }
 
   async getSearchData() {
-    const response = await fetch(SearchEmail)
-    const json = await response.json()
+    const response = await fetch(SearchEmail);
+    const json = await response.json();
     //console.log(response.json);
     
-    this.setState({allEmails: json})
-    this.setState({fullEmailList: json})
+    this.setState({ allEmails: json });
+    this.setState({ fullEmailList: json });
   }
   viewEmail = (emailID) => {
     let currentEmail = this.state.allEmails.filter(each => each.id === emailID);
     this.setState({email: currentEmail});
-    this.setState({viewingEmail: true})
+    this.setState({ viewingEmail: true });
   }
   viewAll = () => {
-    this.setState({viewingEmail: false})
+    this.setState({ viewingEmail: false });
   }
   newEmail = () => {
-    this.setState({allEmails: [], sendingEmail: true,});
+    this.setState({ allEmails: [], sendingEmail: true, });
   }
   emailCancelled = (e) => {
     e.preventDefault();

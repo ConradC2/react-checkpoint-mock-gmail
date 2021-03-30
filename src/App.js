@@ -17,12 +17,9 @@ import EmailList from './EmailList';
 //import Search from './search'
 import './App.css';
 
-
-
 const Email = 'http://localhost:3001/emails'
 const SendEmail = 'http://localhost:3001/send'
 const SearchEmail = 'http://localhost:3001/search'
-
 
 class App extends React.Component {
   constructor(props) {
@@ -74,35 +71,7 @@ class App extends React.Component {
   viewAll = () => {
     this.setState({ viewingEmail: false });
   }
-  newEmail = () => {
-    this.setState({ allEmails: [], sendingEmail: true, });
-  }
-  emailCancelled = (e) => {
-    e.preventDefault();
-    this.setState({allEmails: this.state.fullEmailList, sendingEmail: false});
-  }
-  sendEmail = (e) => {
-    e.preventDefault();
-    
-    let [sender,recipient,subject,message] = Array.from(e.target.elements).slice(0,4).map(element => element.value);
-    let messageid = this.state.fullEmailList[this.state.fullEmailList.length - 1].id + 1; 
-
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sender: sender,
-        recipient: recipient,
-        subject: subject,
-        message: message,
-        id: messageid
-      })
-    };
-    
-    fetch(SendEmail, requestOptions)
-        .then(response => response.json())
-        .then(data => this.setState({sentEmailResponse: data}))
-  }
+ 
 
   // searchMethod(emailSearch) {
   //   this.state.getEmailResults(
